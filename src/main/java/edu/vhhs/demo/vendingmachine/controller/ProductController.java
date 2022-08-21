@@ -9,35 +9,37 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.vhhs.demo.vendingmachine.entity.Product;
 import edu.vhhs.demo.vendingmachine.service.ProductService;
 
 @RestController
+@RequestMapping(path = "/api/v${ApiVersion}/product")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
-    @GetMapping("/api/product")
+    @GetMapping("")
     private List<Product> getAllProduct() {
         return productService.getAllProduct();
     }    
 
-    @GetMapping("/api/product/{id}")
+    @GetMapping("/{id}")
     private Optional<Product> getProduct(@PathVariable("id") int id) {
         return productService.getProductById(id);
     }
     
-    @PostMapping("/api/product")  
+    @PostMapping("")  
     private Product saveProduct(@RequestBody Product product)   
     {  
         productService.saveOrUpdate(product);  
         return product;  
     }
 
-    @DeleteMapping("/api/product/{id}")
+    @DeleteMapping("/{id}")
     private void deleteProduct(@PathVariable("id") int id) {
         productService.delete(id);
     }
