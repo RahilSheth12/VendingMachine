@@ -1,7 +1,6 @@
 package edu.vhhs.demo.vendingmachine.entity;
 
 import java.io.Serializable;
-import java.util.function.Consumer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.vhhs.demo.vendingmachine.repository.ProductRepository;
 import  edu.vhhs.demo.vendingmachine.entity.Product;
+import edu.vhhs.demo.vendingmachine.entity.ProductJoin;
 public class ProductService {
 
     @Autowired
@@ -30,6 +31,10 @@ public class ProductService {
 
     public void delete(int id) {
         repository.deleteById(id);
+    }
+
+    public List<ProductJoin> getAvailableProductsByLocation(int location_id) {
+        return repository.findAllProductJoin(location_id);
     }
     
 }
