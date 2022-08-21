@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "3d70c7e7-a770-430f-8bb0-8d8c9e4d2431",
+		"name": "VendingMachineApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Apple\",\n        \"description\": \"Red Apple\",\n        \"imageURL\": \"images/apple.jpg\",\n        \"cost\": 1.5\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Add/Update Inventory To Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"count\": 10,\n    \"location\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/inventory?product_id=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory"
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Inventories by ProductID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/inventory/product?product_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory",
+						"product"
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Inventories by LocationID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/inventory/location?location_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory",
+						"location"
+					],
+					"query": [
+						{
+							"key": "location_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/api/product/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/product/1"
+			},
+			"response": []
+		}
+	]
+}
