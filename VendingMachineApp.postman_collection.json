@@ -68,6 +68,15 @@
 			"response": []
 		},
 		{
+			"name": "List Products by LocationID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/v1/product/location/1"
+			},
+			"response": []
+		},
+		{
 			"name": "List Inventories by ProductID",
 			"request": {
 				"method": "GET",

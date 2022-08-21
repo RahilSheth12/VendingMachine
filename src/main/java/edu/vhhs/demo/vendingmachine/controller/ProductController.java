@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.vhhs.demo.vendingmachine.entity.Product;
+import edu.vhhs.demo.vendingmachine.entity.ProductJoin;
 import edu.vhhs.demo.vendingmachine.service.ProductService;
 
 @RestController
@@ -44,5 +45,9 @@ public class ProductController {
         productService.delete(id);
     }
 
+    @GetMapping("/location/{location_id}")
+    private List<ProductJoin> getAvailableProductsByLocation(@PathVariable("location_id") int location_id) {
+        return productService.getAvailableProductsByLocation(location_id);
+    }
 
 }
