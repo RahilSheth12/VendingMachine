@@ -10,7 +10,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/product"
+				"url": "localhost:8080/api/v1/product"
 			},
 			"response": []
 		},
@@ -28,7 +28,7 @@
 						}
 					}
 				},
-				"url": "localhost:8080/api/product"
+				"url": "localhost:8080/api/v1/product"
 			},
 			"response": []
 		},
@@ -39,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"count\": 10,\n    \"location\": 1\n}",
+					"raw": "{\n    \"count\": 5,\n    \"location\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -47,13 +47,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/inventory?product_id=2",
+					"raw": "localhost:8080/api/v1/inventory?product_id=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"inventory"
 					],
 					"query": [
@@ -72,20 +73,21 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/inventory/product?product_id=1",
+					"raw": "localhost:8080/api/v1/inventory/product?product_id=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"inventory",
 						"product"
 					],
 					"query": [
 						{
 							"key": "product_id",
-							"value": "1"
+							"value": "2"
 						}
 					]
 				}
@@ -98,13 +100,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/inventory/location?location_id=1",
+					"raw": "localhost:8080/api/v1/inventory/location?location_id=1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"inventory",
 						"location"
 					],
@@ -123,7 +126,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "localhost:8080/api/product/2"
+				"url": "localhost:8080/api/v1/product/2"
 			},
 			"response": []
 		},
@@ -132,7 +135,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/product/1"
+				"url": "localhost:8080/api/v1/product/2"
 			},
 			"response": []
 		}
