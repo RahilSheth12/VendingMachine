@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,10 +35,8 @@ public class VendingMachine implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =
-    // "vending_machine")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonBackReference
     private List<Inventory> inventories;
 
     public VendingMachine(String name) {

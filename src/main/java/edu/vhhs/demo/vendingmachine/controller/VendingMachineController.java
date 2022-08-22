@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.vhhs.demo.vendingmachine.entity.Product;
 import edu.vhhs.demo.vendingmachine.entity.VendingMachine;
-import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
-import edu.vhhs.demo.vendingmachine.service.ProductService;
 import edu.vhhs.demo.vendingmachine.service.VendingMachineService;
 
 @RestController

@@ -35,9 +35,17 @@ public class InventoryService {
         return inventoryRepository.findById(id);
     }
 
+    /**
+     * Add product inventory to the vending machine
+     * 
+     * @param product_id  product id
+     * @param location_id vending machine id
+     * @param inventory   available inventory count for the product
+     */
     public void saveOrUpdate(int product_id, int location_id, Inventory inventory) {
         Optional<Product> productOptional = productRepository.findById(product_id);
         Optional<VendingMachine> vendingMachineOptional = vendingMachineRepository.findById(location_id);
+        // Check to see if inventory exist and update existing inventory with new count
         if (productOptional.isPresent() && vendingMachineOptional.isPresent()) {
             Product product = productOptional.get();
             VendingMachine vendingMachine = vendingMachineOptional.get();
@@ -52,6 +60,7 @@ public class InventoryService {
                         product_inventory.setCount(inventory.getCount());
                     }
                 }
+                // add new inventory of the product in newer vending machine
                 if (isNewInventory) {
                     product_inventories = new ArrayList<Inventory>();
                     // add new inventory new location
@@ -62,8 +71,8 @@ public class InventoryService {
                     vendingMachine.setInventories(product_inventories);
                 }
             } else {
+                // add new product inventory in newer vending machine
                 product_inventories = new ArrayList<Inventory>();
-                // add new inventory for location
                 inventory.setVendingMachine(vendingMachine);
                 inventory.setProduct(product);
                 product_inventories.add(inventory);
@@ -74,6 +83,13 @@ public class InventoryService {
         }
     }
 
+    /**
+     * Retrieve all inventories by product id across vending machines
+     * 
+     * @param product_id product id
+     * @return List<ProductJoin> list of products with available inventories and
+     *         vending machine name
+     */
     public List<ProductJoin> getInventoriesByProductID(int product_id) {
         return inventoryRepository.findAllInventoryByProductIdNative(product_id);
     }
