@@ -1,0 +1,31 @@
+# Actuator
+management.endpoints.web.exposure.include: "*"
+
+ApiVersion: 1
+
+spring.jpa:
+  properties.hibernate:
+    show_sql: true
+    format_sql: true
+  show-sql: true
+  database-platform: "org.hibernate.dialect.H2Dialect"
+  hibernate.ddl-auto: "update"
+
+spring.datasource:
+  url: "jdbc:h2:mem:vendingdb"
+  username: "sa"
+  password: "vhhs"
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid,profile,email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs

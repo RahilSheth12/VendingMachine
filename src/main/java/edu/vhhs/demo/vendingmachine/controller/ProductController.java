@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,17 +24,19 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Product> getAllProduct() {
         return productService.getAllProduct();
     }
 
-    @GetMapping("/{id}")
-    private Optional<Product> getProduct(@PathVariable("id") int id) {
-        return productService.getProductById(id);
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    private Product getProduct(@PathVariable("id") int id) {
+        Optional<Product> opProduct = productService.getProductById(id);
+        Product product = opProduct.isPresent() ? opProduct.get() : new Product();
+        return product;
     }
 
-    @PostMapping("")
+    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     private Product saveProduct(@RequestBody Product product) {
         productService.saveOrUpdate(product);
         return product;
@@ -51,7 +54,7 @@ public class ProductController {
      * @return List<ProductJoin> list of products with available inventories and
      *         vending machine name
      */
-    @GetMapping("/location/{location_id}")
+    @GetMapping(value = "/location/{location_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<ProductJoin> getAvailableProductsByLocation(@PathVariable("location_id") int location_id) {
         return productService.getAvailableProductsByLocation(location_id);
     }

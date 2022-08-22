@@ -28,8 +28,10 @@ public class VendingMachineController {
     }
 
     @GetMapping("/{id}")
-    private Optional<VendingMachine> getVendingMachine(@PathVariable("id") int id) {
-        return vendingMachineService.getVendingMachineById(id);
+    private VendingMachine getVendingMachine(@PathVariable("id") int id) {
+        Optional<VendingMachine> opVendingMachine = vendingMachineService.getVendingMachineById(id);
+        VendingMachine vendingMachine = opVendingMachine.isPresent() ? opVendingMachine.get() : new VendingMachine();
+        return vendingMachine;
     }
 
     @PostMapping("")
