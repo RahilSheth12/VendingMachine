@@ -8,6 +8,20 @@
 		{
 			"name": "List Products",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/product"
@@ -16,12 +30,29 @@
 		},
 		{
 			"name": "Add Product",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"name\": \"Apple\",\n        \"description\": \"Red Apple\",\n        \"imageURL\": \"images/apple.jpg\",\n        \"cost\": 1.5\n    }",
+					"raw": "{\n    \"name\": \"Apple\",\n    \"description\": \"Red Apple\",\n    \"imageURL\": \"images/apple.jpg\",\n    \"cost\": 1.5\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -35,6 +66,20 @@
 		{
 			"name": "List Vending Machines",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/vendingMachine"
@@ -44,6 +89,20 @@
 		{
 			"name": "Add Vending Machine",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -62,6 +121,20 @@
 		{
 			"name": "Add/Update Inventory To Product",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
@@ -101,6 +174,20 @@
 		{
 			"name": "List Products by LocationID",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/product/location/1"
@@ -110,10 +197,24 @@
 		{
 			"name": "List Inventories by ProductID",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory/product?product_id=1",
+					"raw": "localhost:8080/api/v1/inventory/product?product_id=2",
 					"host": [
 						"localhost"
 					],
@@ -127,7 +228,7 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "1"
+							"value": "2"
 						}
 					]
 				}
@@ -137,6 +238,20 @@
 		{
 			"name": "Delete Product",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": "localhost:8080/api/v1/product/2"
@@ -146,6 +261,20 @@
 		{
 			"name": "Delete Vending Machine",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": "localhost:8080/api/v1/vendingMachine/2"
@@ -155,18 +284,46 @@
 		{
 			"name": "Get Product",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/v1/product/2"
+				"url": "localhost:8080/api/v1/product/1"
 			},
 			"response": []
 		},
 		{
 			"name": "Get Vending Machine",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "google-auth",
+						"clientSecret": "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",
+						"clientId": "942178444843-tq5dues7csdaadncdu21cil879jsssgm.apps.googleusercontent.com",
+						"scope": "openid profile email",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "http://localhost:8080/oauth2/callback",
+						"useBrowser": false,
+						"addTokenTo": "header"
+					}
+				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/v1/vendingMachine/2"
+				"url": "localhost:8080/api/v1/vendingMachine/1"
 			},
 			"response": []
 		}
