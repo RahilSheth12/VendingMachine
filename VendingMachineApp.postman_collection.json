@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3d70c7e7-a770-430f-8bb0-8d8c9e4d2431",
+		"_postman_id": "0d71de5e-16ef-45fe-82b7-5dcdca473a8d",
 		"name": "VendingMachineApp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -33,13 +33,40 @@
 			"response": []
 		},
 		{
+			"name": "List Vending Machines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/v1/vendingMachine"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Vending Machine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Room 302\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/v1/vendingMachine"
+			},
+			"response": []
+		},
+		{
 			"name": "Add/Update Inventory To Product",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"count\": 5,\n    \"location\": 1\n}",
+					"raw": "{\n    \"count\": 10\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -47,7 +74,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory?product_id=2",
+					"raw": "localhost:8080/api/v1/inventory?product_id=1&location_id=1",
 					"host": [
 						"localhost"
 					],
@@ -60,7 +87,11 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "2"
+							"value": "1"
+						},
+						{
+							"key": "location_id",
+							"value": "1"
 						}
 					]
 				}
@@ -82,7 +113,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory/product?product_id=2",
+					"raw": "localhost:8080/api/v1/inventory/product?product_id=1",
 					"host": [
 						"localhost"
 					],
@@ -96,33 +127,6 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "2"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Inventories by LocationID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/api/v1/inventory/location?location_id=1",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"inventory",
-						"location"
-					],
-					"query": [
-						{
-							"key": "location_id",
 							"value": "1"
 						}
 					]
@@ -140,11 +144,29 @@
 			"response": []
 		},
 		{
+			"name": "Delete Vending Machine",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/api/v1/vendingMachine/2"
+			},
+			"response": []
+		},
+		{
 			"name": "Get Product",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/product/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vending Machine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/v1/vendingMachine/1"
 			},
 			"response": []
 		}

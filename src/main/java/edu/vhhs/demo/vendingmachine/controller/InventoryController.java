@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.vhhs.demo.vendingmachine.entity.Inventory;
+import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
 import edu.vhhs.demo.vendingmachine.service.InventoryService;
 
 @RestController
@@ -22,25 +23,27 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
 
-    @PatchMapping("")  
-    private void saveInventory(@RequestParam("product_id") int product_id, @RequestBody Inventory inventory)   
-    {  
-        inventoryService.saveOrUpdate(product_id,inventory);  
+    @PatchMapping("")
+    private void saveInventory(@RequestParam("product_id") int product_id, @RequestParam("location_id") int location_id,
+            @RequestBody Inventory inventory) {
+        inventoryService.saveOrUpdate(product_id, location_id, inventory);
     }
 
-    @DeleteMapping("/{product_id}")
-    private void deleteInventoryByProduct(@PathVariable("product_id") int product_id) {
-        inventoryService.delete(product_id);
-    }
+    // @DeleteMapping("/{product_id}")
+    // private void deleteInventoryByProduct(@PathVariable("product_id") int
+    // product_id) {
+    // inventoryService.delete(product_id);
+    // }
 
     @GetMapping("/product")
-    private Inventory getInventoryByProduct(@RequestParam("product_id") int product_id) {
-        return inventoryService.getInventoryByProductID(product_id);
+    private List<ProductJoin> getInventoryByProduct(@RequestParam("product_id") int product_id) {
+        return inventoryService.getInventoriesByProductID(product_id);
     }
 
-    @GetMapping("/location")
-    private List<Inventory> getInventoryByLocation(@RequestParam("location_id") int location_id) {
-        return inventoryService.getInventoryByLocation(location_id);
-    }
+    // @GetMapping("/location")
+    // private List<Inventory> getInventoryByLocation(@RequestParam("location_id")
+    // int location_id) {
+    // return inventoryService.getInventoryByLocation(location_id);
+    // }
 
 }

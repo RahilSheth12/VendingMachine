@@ -5,36 +5,41 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-
+import edu.vhhs.demo.vendingmachine.entity.Product;
+import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
+import edu.vhhs.demo.vendingmachine.repository.InventoryRepository;
 import edu.vhhs.demo.vendingmachine.repository.ProductRepository;
-import  edu.vhhs.demo.vendingmachine.entity.Product;
-import edu.vhhs.demo.vendingmachine.entity.ProductJoin;
+
 public class ProductService {
 
     @Autowired
-    ProductRepository repository;
-    
+    ProductRepository productRepository;
+
+    @Autowired
+    InventoryRepository inventoryRepository;
+
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<Product>();
-        repository.findAll().forEach(product -> products.add(product));
+        productRepository.findAll().forEach(product -> products.add(product));
         return products;
     }
 
     public Optional<Product> getProductById(int id) {
-        return repository.findById(id);
+        return productRepository.findById(id);
     }
 
     public void saveOrUpdate(Product product) {
-        repository.save(product);
+        productRepository.save(product);
     }
 
     public void delete(int id) {
-        repository.deleteById(id);
+        productRepository.deleteById(id);
     }
 
     public List<ProductJoin> getAvailableProductsByLocation(int location_id) {
-        return repository.findAllProductJoin(location_id);
+        return productRepository.findAllProductJoin(location_id);
     }
-    
+
 }

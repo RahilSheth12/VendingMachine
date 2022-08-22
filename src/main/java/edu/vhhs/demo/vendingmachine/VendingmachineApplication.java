@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import edu.vhhs.demo.vendingmachine.service.InventoryService;
 import edu.vhhs.demo.vendingmachine.service.ProductService;
-
+import edu.vhhs.demo.vendingmachine.service.VendingMachineService;
 
 @EnableJpaRepositories("edu.vhhs.demo.vendingmachine.repository")
 @EntityScan("edu.vhhs.demo.vendingmachine.entity")
-@ComponentScan(basePackages = {"edu.vhhs.demo.vendingmachine"})
+@ComponentScan(basePackages = { "edu.vhhs.demo.vendingmachine" })
 @SpringBootApplication
 public class VendingmachineApplication {
 
@@ -31,4 +31,8 @@ public class VendingmachineApplication {
 		return new InventoryService();
 	}
 
+	@Bean
+	public VendingMachineService getVendingMachineService() {
+		return new VendingMachineService();
+	}
 }
