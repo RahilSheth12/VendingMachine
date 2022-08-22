@@ -44,6 +44,13 @@ public class ProductController {
         productService.delete(id);
     }
 
+    /**
+     * Retrieve all products by vending machine id
+     * 
+     * @param location_id vending machine id
+     * @return List<ProductJoin> list of products with available inventories and
+     *         vending machine name
+     */
     @GetMapping("/location/{location_id}")
     private List<ProductJoin> getAvailableProductsByLocation(@PathVariable("location_id") int location_id) {
         return productService.getAvailableProductsByLocation(location_id);

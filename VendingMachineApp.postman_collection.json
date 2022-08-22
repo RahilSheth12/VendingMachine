@@ -166,7 +166,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/v1/vendingMachine/1"
+				"url": "localhost:8080/api/v1/vendingMachine/2"
 			},
 			"response": []
 		}
