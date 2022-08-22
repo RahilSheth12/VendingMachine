@@ -20,11 +20,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "products")
+@Table(name = "vending_machines")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Product implements Serializable {
+public class VendingMachine implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,27 +32,18 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "product_name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "product_desc", nullable = true)
-    private String description;
-
-    @Column(name = "product_image", nullable = true)
-    private String imageURL;
-
-    @Column(name = "product_cost")
-    private Float cost;
-
+    // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =
+    // "vending_machine")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Inventory> inventories;
 
-    public Product(String name, String desc, String image_url, float cost) {
+    public VendingMachine(String name) {
         super();
         this.name = name;
-        this.description = desc;
-        this.imageURL = image_url;
-        this.cost = cost;
     }
+
 }

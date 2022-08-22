@@ -13,40 +13,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.vhhs.demo.vendingmachine.entity.Product;
+import edu.vhhs.demo.vendingmachine.entity.VendingMachine;
 import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
 import edu.vhhs.demo.vendingmachine.service.ProductService;
+import edu.vhhs.demo.vendingmachine.service.VendingMachineService;
 
 @RestController
-@RequestMapping(path = "/api/v${ApiVersion}/product")
-public class ProductController {
+@RequestMapping(path = "/api/v${ApiVersion}/vendingMachine")
+public class VendingMachineController {
 
     @Autowired
-    ProductService productService;
+    VendingMachineService vendingMachineService;
 
     @GetMapping("")
-    private List<Product> getAllProduct() {
-        return productService.getAllProduct();
+    private List<VendingMachine> getAllVendingMachine() {
+        return vendingMachineService.getAllVendingMachine();
     }
 
     @GetMapping("/{id}")
-    private Optional<Product> getProduct(@PathVariable("id") int id) {
-        return productService.getProductById(id);
+    private Optional<VendingMachine> getVendingMachine(@PathVariable("id") int id) {
+        return vendingMachineService.getVendingMachineById(id);
     }
 
     @PostMapping("")
-    private Product saveProduct(@RequestBody Product product) {
-        productService.saveOrUpdate(product);
-        return product;
+    private VendingMachine saveVendingMachine(@RequestBody VendingMachine vendingMachine) {
+        vendingMachineService.saveOrUpdate(vendingMachine);
+        return vendingMachine;
     }
 
     @DeleteMapping("/{id}")
-    private void deleteProduct(@PathVariable("id") int id) {
-        productService.delete(id);
+    private void deleteVendingMachine(@PathVariable("id") int id) {
+        vendingMachineService.delete(id);
     }
-
-    @GetMapping("/location/{location_id}")
-    private List<ProductJoin> getAvailableProductsByLocation(@PathVariable("location_id") int location_id) {
-        return productService.getAvailableProductsByLocation(location_id);
-    }
-
 }
