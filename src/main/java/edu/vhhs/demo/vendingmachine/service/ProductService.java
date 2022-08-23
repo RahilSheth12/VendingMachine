@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import edu.vhhs.demo.vendingmachine.entity.Inventory;
 import edu.vhhs.demo.vendingmachine.entity.Product;
@@ -12,13 +16,18 @@ import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
 import edu.vhhs.demo.vendingmachine.repository.InventoryRepository;
 import edu.vhhs.demo.vendingmachine.repository.ProductRepository;
 
+@Service("productService")
 public class ProductService {
 
-    @Autowired
-    ProductRepository productRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
-    InventoryRepository inventoryRepository;
+    @Qualifier("productRepository")
+    private ProductRepository productRepository;
+
+    @Autowired
+    @Qualifier("inventoryRepository")
+    private InventoryRepository inventoryRepository;
 
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<Product>();
@@ -41,6 +50,7 @@ public class ProductService {
      * @param id product id
      */
     public void delete(int id) {
+        LOGGER.debug("Deleting product({0}) across all vending machine.", id);
         Product product = getProductById(id).isPresent() ? getProductById(id).get() : new Product();
         List<Inventory> inventories = inventoryRepository.findByProduct(product);
         ArrayList<Inventory> updatedInventories = new ArrayList<Inventory>();

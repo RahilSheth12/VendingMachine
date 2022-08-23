@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.vhhs.demo.vendingmachine.entity.Product;
 import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
 
-@Repository
+@Repository("productRepository")
 @Transactional
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 

@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.vhhs.demo.vendingmachine.entity.VendingMachine;
 
-@Repository
+@Repository("vendingMachineRepository")
 @Transactional
 public interface VendingMachineRepository extends CrudRepository<VendingMachine, Integer> {
 }
