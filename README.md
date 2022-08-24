@@ -16,3 +16,6 @@ FLUSH PRIVILEGES;
 mysql -uvending -p
 
 CREATE DATABASE vendingdb;
+
+To run with mysql profile ...
+`mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=mysql`
