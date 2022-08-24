@@ -1,5 +1,7 @@
 package edu.vhhs.demo.vendingmachine;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +19,9 @@ import edu.vhhs.demo.vendingmachine.service.VendingMachineService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataLoader.class);
+
     @Autowired
     @Qualifier("productService")
     private ProductService productService;
@@ -39,14 +44,18 @@ public class DataLoader implements CommandLineRunner {
         Inventory inventory = new Inventory(5);
         VendingMachine vendingMachine = new VendingMachine("Room 301");
 
-        product = productService.saveOrUpdate(product);
-        vendingMachine = vendingMachineService.saveOrUpdate(vendingMachine);
-        inventoryService.saveOrUpdate(product.getId(), vendingMachine.getId(), inventory);
-        UserDetails userDetails = new UserDetails();
-        userDetails.setEmail("jigsheth@gmail.com");
-        userDetails.setName("Jignesh Sheth");
-        userDetails.setRole(UserRole.ADMIN_ROLE);
-        userDetailsRepository.save(userDetails);
+        try {
+            product = productService.saveOrUpdate(product);
+            vendingMachine = vendingMachineService.saveOrUpdate(vendingMachine);
+            inventoryService.saveOrUpdate(product.getId(), vendingMachine.getId(), inventory);
+            UserDetails userDetails = new UserDetails();
+            userDetails.setEmail("jigsheth@gmail.com");
+            userDetails.setName("Jignesh Sheth");
+            userDetails.setRole(UserRole.ADMIN_ROLE);
+            userDetailsRepository.save(userDetails);
+        } catch (Exception e) {
+            LOGGER.error("Error loading default data.", e);
+        }
     }
 
 }

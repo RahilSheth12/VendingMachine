@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "0d71de5e-16ef-45fe-82b7-5dcdca473a8d",
+		"_postman_id": "82cd9f00-1736-404c-81e6-274321eb2d22",
 		"name": "VendingMachineApp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "List Products",
+			"name": "List All Products",
 			"request": {
 				"auth": {
 					"type": "oauth2"
@@ -84,7 +84,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"count\": 10\n}",
+					"raw": "{\n    \"count\": 12\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,7 +92,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory?product_id=1&location_id=1",
+					"raw": "localhost:8080/api/v1/inventory?product_id=4&location_id=4",
 					"host": [
 						"localhost"
 					],
@@ -105,11 +105,11 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "1"
+							"value": "4"
 						},
 						{
 							"key": "location_id",
-							"value": "1"
+							"value": "4"
 						}
 					]
 				}
@@ -124,7 +124,7 @@
 				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/v1/product/location/1"
+				"url": "localhost:8080/api/v1/product/location/4"
 			},
 			"response": []
 		},
@@ -137,7 +137,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory/product?product_id=2",
+					"raw": "localhost:8080/api/v1/inventory/product?product_id=4",
 					"host": [
 						"localhost"
 					],
@@ -151,7 +151,7 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "2"
+							"value": "4"
 						}
 					]
 				}
@@ -178,7 +178,7 @@
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": "localhost:8080/api/v1/vendingMachine/2"
+				"url": "localhost:8080/api/v1/vendingMachine/1"
 			},
 			"response": []
 		},
@@ -203,6 +203,18 @@
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/vendingMachine/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/whoami"
 			},
 			"response": []
 		}

@@ -70,6 +70,10 @@ public class InventoryService {
                     if (currentLocationID == location_id) {
                         isNewInventory = false;
                         product_inventory.setCount(inventory.getCount());
+                        product_inventories = new ArrayList<Inventory>();
+                        product_inventories.add(product_inventory);
+                        product.setInventories(product_inventories);
+                        vendingMachine.setInventories(product_inventories);
                     }
                 }
                 // add new inventory of the product in newer vending machine
@@ -91,6 +95,7 @@ public class InventoryService {
                 product.setInventories(product_inventories);
                 vendingMachine.setInventories(product_inventories);
             }
+            vendingMachineRepository.save(vendingMachine);
             productRepository.save(product);
         }
     }
