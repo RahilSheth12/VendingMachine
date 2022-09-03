@@ -14,7 +14,7 @@ import edu.vhhs.demo.vendingmachine.projection.ProductJoin;
 @Transactional
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
-    @Query(value = "SELECT distinct p.id as id, p.product_name as name, p.product_desc as description, p.product_image as imageURL, p.product_cost as cost, i.inventory_count as count, v.name as locationName from products p left outer join inventories i on p.id = i.product_id left outer join vending_machines v on i.vending_machine_id=v.id where v.id=?1", nativeQuery = true)
-    List<ProductJoin> findAllProductJoin(Integer location_id);
+    @Query(value = "SELECT distinct p.id as id, p.product_name as name, p.product_desc as description, p.product_image as imageURL, p.product_cost as cost, i.inventory_count as count, v.name as locationName from products p left outer join inventories i on p.id = i.product_id left outer join vending_machines v on i.vending_machine_id=v.id where v.name=?1", nativeQuery = true)
+    List<ProductJoin> findAllProductJoin(String location_name);
 
 }

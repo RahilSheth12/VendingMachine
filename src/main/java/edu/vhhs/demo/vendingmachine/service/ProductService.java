@@ -70,8 +70,8 @@ public class ProductService {
      * @return List<ProductJoin> list of products with available inventories and
      *         vending machine name
      */
-    public List<ProductJoin> getAvailableProductsByLocation(int location_id) {
-        return productRepository.findAllProductJoin(location_id);
+    public List<ProductJoin> getAvailableProductsByLocation(String location_name) {
+        return productRepository.findAllProductJoin(location_name);
     }
 
 }

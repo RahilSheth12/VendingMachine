@@ -4,44 +4,42 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users_profile")
+@Table(name = "rewards")
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDetails {
+public class Reward {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "picture", nullable = true)
-    private String picture;
+    @Column(nullable = false)
+    private Integer points;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private RewardAction action;
 
-    public UserDetails(String name, String email, String picture) {
-        super();
-        this.name = name;
-        this.email = email;
-        this.picture = picture;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private UserProfile studentProfile;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private UserProfile teacherProfile;
 }

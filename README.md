@@ -19,3 +19,5 @@ CREATE DATABASE vendingdb;
 
 To run with mysql profile ...
 `mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=mysql`
+
+See [VendingMachineUI_Sample](https://github.com/jigsheth57/VendingMachineUI_Sample) to learn how to use secure VendingMachine APIs.
