@@ -1,5 +1,6 @@
 # Actuator
 management.endpoints.web.exposure.include: "*"
+management.endpoint.health.show-details: always
 
 ApiVersion: 1
 AuthClientId: "942178444843-7aun6j3qv9dtaq7uqdbth0lvhaiumfqq.apps.googleusercontent.com"
@@ -34,12 +35,6 @@ spring.datasource:
 ---
 spring:
   profiles: mysql
-
-# Actuator
-management.endpoints.web.exposure.include: "*"
-
-ApiVersion: 1
-AuthClientId: "942178444843-7aun6j3qv9dtaq7uqdbth0lvhaiumfqq.apps.googleusercontent.com"
 
 spring.jpa:
   open-in-view: false

@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import edu.vhhs.demo.vendingmachine.entity.UserDetails;
+import edu.vhhs.demo.vendingmachine.entity.UserProfile;
 
 @Repository("userDetailsRepository")
-public interface UserDetailsRepository extends CrudRepository<UserDetails, Long> {
+public interface UserDetailsRepository extends CrudRepository<UserProfile, Long> {
 
-    Optional<UserDetails> findByEmail(String email);
+    Optional<UserProfile> findByEmail(String email);
 
 }

@@ -14,7 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 
-import edu.vhhs.demo.vendingmachine.entity.UserDetails;
+import edu.vhhs.demo.vendingmachine.entity.UserProfile;
 import edu.vhhs.demo.vendingmachine.entity.UserRole;
 import edu.vhhs.demo.vendingmachine.repository.UserDetailsRepository;
 import edu.vhhs.demo.vendingmachine.service.GoogleTokenVerifier;
@@ -51,12 +51,12 @@ public class GoogleAuthenticationManager implements AuthenticationManager {
 			throw new BadCredentialsException("Invalid token payload");
 		}
 
-		Optional<UserDetails> optUserDetails = userDetailsRepository.findByEmail(email);
+		Optional<UserProfile> optUserDetails = userDetailsRepository.findByEmail(email);
 
-		UserDetails userDetails;
+		UserProfile userDetails;
 
 		if (optUserDetails.isEmpty()) {
-			userDetails = new UserDetails(name, email, picture);
+			userDetails = new UserProfile(name, email, picture);
 			userDetails.setRole(UserRole.USER_ROLE);
 			userDetailsRepository.save(userDetails);
 		} else {

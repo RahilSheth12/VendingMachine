@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import edu.vhhs.demo.vendingmachine.entity.Inventory;
 import edu.vhhs.demo.vendingmachine.entity.Product;
-import edu.vhhs.demo.vendingmachine.entity.UserDetails;
+import edu.vhhs.demo.vendingmachine.entity.UserProfile;
 import edu.vhhs.demo.vendingmachine.entity.UserRole;
 import edu.vhhs.demo.vendingmachine.entity.VendingMachine;
 import edu.vhhs.demo.vendingmachine.repository.UserDetailsRepository;
@@ -48,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
             product = productService.saveOrUpdate(product);
             vendingMachine = vendingMachineService.saveOrUpdate(vendingMachine);
             inventoryService.saveOrUpdate(product.getId(), vendingMachine.getId(), inventory);
-            UserDetails userDetails = new UserDetails();
+            UserProfile userDetails = new UserProfile();
             userDetails.setEmail("jigsheth@gmail.com");
             userDetails.setName("Jignesh Sheth");
             userDetails.setRole(UserRole.ADMIN_ROLE);

@@ -11,9 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -47,6 +44,11 @@ public class Inventory implements Serializable {
     public Inventory(Integer count) {
         super();
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory(id=" + this.getId() + ", count=" + this.getCount() + ")";
     }
 
 }

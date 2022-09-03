@@ -1,7 +1,7 @@
 package edu.vhhs.demo.vendingmachine.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,10 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.IndexColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,15 +45,21 @@ public class Product implements Serializable {
     private Float cost;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @IndexColumn(name = "INDEX_COL")
     @JsonIgnore
-    private List<Inventory> inventories;
+    private Set<Inventory> inventories;
 
-    public Product(String name, String desc, String image_url, float cost) {
+    public Product(String name, String desc, String imageURL, float cost) {
         super();
         this.name = name;
         this.description = desc;
-        this.imageURL = image_url;
+        this.imageURL = imageURL;
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "Product(id=" + this.getId() + ", name=" + this.getName() + ", description=" + this.getDescription()
+                + ", imageURL=" + this.getImageURL() + ", cost=" + this.getCost() + ")";
+    }
+
 }

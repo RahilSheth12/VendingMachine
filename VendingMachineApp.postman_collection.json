@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "82cd9f00-1736-404c-81e6-274321eb2d22",
+		"_postman_id": "38ebe804-16f8-43e3-8dff-f5384920c83e",
 		"name": "VendingMachineApp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -8,9 +8,6 @@
 		{
 			"name": "List All Products",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/product"
@@ -23,9 +20,6 @@
 				"disabledSystemHeaders": {}
 			},
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -44,9 +38,6 @@
 		{
 			"name": "List Vending Machines",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/vendingMachine"
@@ -56,9 +47,6 @@
 		{
 			"name": "Add Vending Machine",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -77,14 +65,11 @@
 		{
 			"name": "Add/Update Inventory To Product",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"count\": 12\n}",
+					"raw": "{\n    \"count\": 5\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,7 +77,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory?product_id=4&location_id=4",
+					"raw": "localhost:8080/api/v1/inventory?product_id=2&location_id=2",
 					"host": [
 						"localhost"
 					],
@@ -105,11 +90,11 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "4"
+							"value": "2"
 						},
 						{
 							"key": "location_id",
-							"value": "4"
+							"value": "2"
 						}
 					]
 				}
@@ -119,25 +104,19 @@
 		{
 			"name": "List Products by LocationID",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/api/v1/product/location/4"
+				"url": "localhost:8080/api/v1/product/location/2"
 			},
 			"response": []
 		},
 		{
 			"name": "List Inventories by ProductID",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/inventory/product?product_id=4",
+					"raw": "localhost:8080/api/v1/inventory/product?product_id=1",
 					"host": [
 						"localhost"
 					],
@@ -151,7 +130,7 @@
 					"query": [
 						{
 							"key": "product_id",
-							"value": "4"
+							"value": "1"
 						}
 					]
 				}
@@ -161,9 +140,6 @@
 		{
 			"name": "Delete Product",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "DELETE",
 				"header": [],
 				"url": "localhost:8080/api/v1/product/2"
@@ -173,21 +149,15 @@
 		{
 			"name": "Delete Vending Machine",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "DELETE",
 				"header": [],
-				"url": "localhost:8080/api/v1/vendingMachine/1"
+				"url": "localhost:8080/api/v1/vendingMachine/2"
 			},
 			"response": []
 		},
 		{
 			"name": "Get Product",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/product/1"
@@ -197,9 +167,6 @@
 		{
 			"name": "Get Vending Machine",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/api/v1/vendingMachine/1"
@@ -209,14 +176,46 @@
 		{
 			"name": "Get User Profile",
 			"request": {
-				"auth": {
-					"type": "oauth2"
-				},
 				"method": "GET",
 				"header": [],
 				"url": "localhost:8080/whoami"
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": {
+			"scope": "",
+			"clientId": "",
+			"redirect_uri": "",
+			"authUrl": "",
+			"accessTokenUrl": "",
+			"grant_type": "authorization_code",
+			"tokenName": "",
+			"challengeAlgorithm": "S256",
+			"addTokenTo": "header",
+			"client_authentication": "header"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

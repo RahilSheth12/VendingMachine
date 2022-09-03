@@ -1,11 +1,12 @@
 package edu.vhhs.demo.vendingmachine.entity;
 
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,33 +21,44 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "vending_machines")
+@Table(name = "users_profile")
 @Getter
 @Setter
 @NoArgsConstructor
-public class VendingMachine implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "picture", nullable = true)
+    private String picture;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Inventory> inventories;
+    private Set<Reward> rewards;
 
-    public VendingMachine(String name) {
+    public UserProfile(String name, String email, String picture) {
         super();
         this.name = name;
+        this.email = email;
+        this.picture = picture;
     }
 
     @Override
     public String toString() {
-        return "VendingMachine(id=" + this.getId() + ", name=" + this.getName() + ")";
+        return "UserProfile(id=" + this.getId() + ", name=" + this.getName() + ", email=" + this.getEmail()
+                + ", picture=" + this.getPicture() + ")";
     }
 
 }

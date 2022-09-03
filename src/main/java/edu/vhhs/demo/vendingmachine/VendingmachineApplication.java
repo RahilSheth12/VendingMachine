@@ -1,7 +1,5 @@
 package edu.vhhs.demo.vendingmachine;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -18,8 +16,6 @@ import edu.vhhs.demo.vendingmachine.service.VendingMachineService;
 @ComponentScan(basePackages = { "edu.vhhs.demo.vendingmachine" })
 @SpringBootApplication
 public class VendingmachineApplication {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(VendingmachineApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendingmachineApplication.class, args);
